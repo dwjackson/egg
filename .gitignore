@@ -3,3 +3,4 @@ timer
 test_parse
 cscope.out
 *.a
+*.1.gz
