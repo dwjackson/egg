@@ -2,7 +2,7 @@
 .Dt TIMER 1
 .Os
 .Sh TIMER
-.Nm timer
+.Nm egg 
 .Nd egg timer, count down a specific duration of time
 .Sh SYNOPSIS
 .Nm
@@ -51,18 +51,18 @@ the unit
 is optional.
 .Sh EXAMPLES
 .Bl -tag -width Ds
-.It timer 2m30s
+.It egg 2m30s
 Time out two minutes and thirty seconds, sound the chime when the timer
 completes until the user stops it.
-.It timer 30
+.It egg 30
 Time out thirty seconds, sound the chime when the timer completes until the
 user stops it.
-.It timer -e 1 1h30m45s
+.It egg -e 1 1h30m45s
 Time out one hour, thirty minutes, and forty five seconds; stop the chime after
 one second.
-.It timer -s 2m
+.It egg -s 2m
 Time out one minute, count down in seconds (in this case, from 120).
-.It timer -q 3m
+.It egg -q 3m
 Time out three minutes, but do not print the remaining time or play any chime
 upon timer completion.
 .El

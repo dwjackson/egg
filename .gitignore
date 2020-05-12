@@ -1,5 +1,5 @@
 *.o
-timer
+egg
 test_parse
 cscope.out
 *.a

@@ -1,13 +1,13 @@
-# Timer
+# Egg Timer
 
-Timer is, as you might expect, a simple (egg) timer program.
+Egg Timer is, as you might expect, a simple (egg) timer program.
 
 ## Usage
 
 Timer is used as follows:
 
 ```sh
-timer [FLAGS] [DURATION]
+egg [FLAGS] [DURATION]
 ```
 
 The duration can be specified using the following syntax:
@@ -24,7 +24,7 @@ kills the program via a CTRL+C.
 
 ## Flags
 
-The `timer` program supports the following flags:
+The `egg` program supports the following flags:
 
 * `-s` Count down in seconds vs hh:mm:ss
 * `-m [MESSAGE]` write a message when the timer completes
