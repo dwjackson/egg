@@ -1,0 +1,5 @@
+*.o
+timer
+test_parse
+cscope.out
+*.a
