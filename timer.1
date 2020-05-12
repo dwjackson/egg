@@ -1,0 +1,68 @@
+.Dd May 11, 2020
+.Dt TIMER 1
+.Os
+.Sh TIMER
+.Nm timer
+.Nd egg timer, count down a specific duration of time
+.Sh SYNOPSIS
+.Nm
+.Op Fl e Ar seconds
+.Op Fl m Ar message
+.Op Fl q
+.Op Fl s
+.Ar duration
+.Sh DESCRIPTION
+The
+.Nm
+command counts down a specified duration one time, one second at a time, in the
+manner of a kitchen egg timer. Each second, the remaining time is printed to
+the console (unless suppressed) in the format HH:MM:SS. Upon reaching zero,
+the console bell chimes until the user kills the timer via CTRL+C.
+.Pp
+The user must specify the
+.Ar duration
+of time for the timer to count down. The format is explained below.
+.Pp
+Its options are as follows:
+.Bl -tag -width Ds
+.It Fl e Ar seconds
+End the chime after the timer completes after the given number of
+.Ar seconds
+.It Fl m Ar message
+Upon completion of the timer, print the given
+.Ar message
+.It Fl q
+Quiet mode; do not print anything or play any chimes, simply stop the timer
+after the given duration
+.It Fl s
+Count down time in terms only of seconds, rather than HH:MM:SS
+.El
+.Sh DURATION FORMAT
+The format of the duration is AAhBBmCCs where
+.Dq AA
+is the number of hours,
+.Dq BB
+is the number of minutes, and
+.Dq CC
+is the number of seconds. Note that any of the portions can be omitted as long
+as what remains includes the unit h, m, or s. If only seconds are required then
+the unit
+.Dq s
+is optional.
+.Sh EXAMPLES
+.Bl -tag -width Ds
+.It timer 2m30s
+Time out two minutes and thirty seconds, sound the chime when the timer
+completes until the user stops it.
+.It timer 30
+Time out thirty seconds, sound the chime when the timer completes until the
+user stops it.
+.It timer -e 1 1h30m45s
+Time out one hour, thirty minutes, and forty five seconds; stop the chime after
+one second.
+.It timer -s 2m
+Time out one minute, count down in seconds (in this case, from 120).
+.It timer -q 3m
+Time out three minutes, but do not print the remaining time or play any chime
+upon timer completion.
+.El
