@@ -1,6 +1,8 @@
 # Egg Timer
 
-Egg Timer is, as you might expect, a simple (egg) timer program.
+Egg Timer is, as you might expect, a simple (egg) timer program. You "set it"
+with a duration and it will count down to zero, after which it will play the
+system bell as a chime until you stop it.
 
 ## Usage
 
@@ -19,7 +21,7 @@ XhYmZs
 where X, Y, and Z are numbers. All parts are optional. If you are just doing
 seconds then you don't need the trailing "s."
 
-Note that, by defauly, when the timer runs out it will chime until the user
+Note that, by default, when the timer runs out it will chime until the user
 kills the program via a CTRL+C.
 
 ## Flags
