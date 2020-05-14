@@ -9,7 +9,7 @@ LIB_OBJ_FILES = $(LIB_SRC_FILES:.c=.o)
 MAN_PAGE = $(BASE_NAME).1
 MAN_PAGE_ZIP = $(MAN_PAGE).gz
 CC = gcc
-CFLAGS = -Wall -Wextra -g -O2
+CFLAGS = -Wall -Wextra -g -O2 -pedantic
 PREFIX=/usr/local
 
 all: $(EXE_NAME)

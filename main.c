@@ -92,6 +92,7 @@ static void timer_complete(time_t start_time)
 	time_t end_time;
 	char start_str[9];
 	char end_str[9];
+	int i;
 
 	if (is_quiet) {
 		/* Quiet mode, print nothing & make no noise */
@@ -111,7 +112,7 @@ static void timer_complete(time_t start_time)
 	if (end_after_seconds == 0) {
 		play_chime();
 	} else if (end_after_seconds > 0) {
-		for (int i = 0; i <= end_after_seconds; i++, elapsed++) {
+		for (i = 0; i <= end_after_seconds; i++, elapsed++) {
 			play_chime();
 			print_elapsed(elapsed);
 		}
