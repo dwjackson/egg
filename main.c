@@ -7,7 +7,7 @@
 #include "parse.h"
 #include "timer.h"
 
-#define USAGE_FMT "Usage: %s [SECONDS]\n"
+#define USAGE_FMT "Usage: %s [OPTIONS...] [TIME]\n"
 #define MAX_SECONDS (99 * 3600 + 99 * 60 + 99)
 #define MAX_PART 99
 
@@ -15,6 +15,7 @@ static void timer_complete(time_t start_time);
 static void print_elapsed(seconds_t elapsed);
 static void play_chime();
 static int seconds_are_valid(seconds_t seconds);
+static void show_help(const char* progname);
 
 /* Timer callbacks */
 static void each_tick(struct timer *timer, void *arg);
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
 	timer.callbacks.each_tick = each_tick;
 	timer.callbacks.at_end = at_end;
 
-	while ((opt = getopt(argc, argv, "m:e:sq")) != -1) {
+	while ((opt = getopt(argc, argv, "e:hm:sq")) != -1) {
 		if (opt == 'm') {
 			timer.message = optarg;
 		} else if (opt == 'e') {
@@ -45,6 +46,9 @@ int main(int argc, char *argv[])
 				printf("Bad argument: Stop-after seconds");
 				exit(EXIT_FAILURE);
 			}
+		} else if (opt == 'h') {
+			show_help(argv[0]);
+			exit(EXIT_SUCCESS);
 		} else if (opt == 's') {
 			display_as_seconds = true;
 		} else if (opt == 'q') {
@@ -164,4 +168,20 @@ static void at_end(struct timer *timer, void *arg)
 	}
 
 	timer_complete(start_time);
+}
+
+static void show_help(const char *progname)
+{
+	printf(USAGE_FMT, progname);
+
+	printf("Options:\n");
+	printf("\t-e [SECONDS] - stop the alarm chime after SECONDS seconds\n");
+	printf("\t-h - display this help message\n");
+	printf("\t-m [MESSAGE] - display the given message when the timer ends\n");
+	printf("\t-s - display remaining time in seconds\n");
+	printf("\t-q - do not display remaining time\n");
+
+	printf("Time Strings:\n");
+	printf("\tThe strings are in the format [HOURS]h[MINUTES]m[SECONDS]s\n");
+	printf("\tIf a part of the string is omitted it is assumed to be zero\n");
 }
